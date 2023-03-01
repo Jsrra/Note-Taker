@@ -26,7 +26,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-    fetch('/api/notes', {
+    fetch('/public/assets/notes', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -180,4 +180,4 @@ if (window.location.pathname === '/notes') {
     noteText.addEventListener('keyup', handleRenderSaveBtn);
 }
 
-getAndRenderNotes();
+getAndRenderNotes(); 
