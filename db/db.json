@@ -18,5 +18,10 @@
         "title": "Check in with clients",
         "text": "HOW ARE THE CLIENTS DOING I DONT KNOW LET ME CHECK UP ON THEM",
         "id": "8ad84e3e-22ac-479d-b0e4-cc12999db9fa"
+    },
+    {
+        "title": "Check in with clients again",
+        "text": "IT DIDNT GO WELL LAST TIME LET ME CHECK UP AGAIN",
+        "id": "8ad84e3e-22ac-479d-b0e4-cc12999db9fb"
     }
 ]
