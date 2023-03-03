@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/api', api);
 app.use(express.static('public'));
 
-// These 3 are doing the same thing
+// These 3 are doing the same thing (returns home page)
 
 app.get('/', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/assets/index.html'))
@@ -30,15 +30,27 @@ app.get('', (req, res) =>
     res.sendFile(path.join(__dirname, `/public/assets/index.html`))
 )
 
-app.get(`/notes`, (req, res) =>
+// returns notes html page
+
+app.get(`/notes`, (req, res) =>{
     res.sendFile(path.join(__dirname, `/public/assets/notes.html`))
+}
+    
+)
+
+// return notes in db to client
+
+app.get(`/db/db.json`, (req, res) => {
+    return res.json(notes);
+}
+    
 )
 
 // app.get(`/data`, (req, res) =>
 //     res.sendFile(path.join(__dirname, `/db/db.json`))
 // )
 
-app.post(`/db`, (req, res) => {
+app.post(`/db/db.json`, (req, res) => {
     console.info(`${req.method} request received to add a review`);
 
     const {title, text} = req.body;
@@ -62,9 +74,12 @@ app.post(`/db`, (req, res) => {
         res.status(500).json(`Error in posting note`)
     }
 }
-
 )
-
+app.get(`/notes`, (req, res) => {
+    console.info(`${req.method} request received to add a review`);
+    fs.readFile(`./db/db.json`).then((data) => res.json(JSON.parse(data)))
+}
+)
 app.post('/api/reviews', (req, res) => {
     // Log that a POST request was received
     console.info(`${req.method} request received to add a review`);
